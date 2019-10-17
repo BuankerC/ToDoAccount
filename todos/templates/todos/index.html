@@ -1,6 +1,10 @@
 {% extends 'base.html' %}
 {% load bootstrap4 %}
 {% block body %}
-<h1>인덱스</h1>
-<h1>{{visit_num}}번 방문했습니다.</h1>
+{% for todo in todos %}
+<div class="alert alert-primary" role="alert">
+  <span>{{todo.due_date}} : {{todo.content}}</span> <a href="{% url 'todos:delete' todo.id %}"
+    class="btn btn-danger">완료</a>
+</div>
+{% endfor %}
 {% endblock %}
